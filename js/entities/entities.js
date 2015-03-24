@@ -69,6 +69,10 @@ game.PlayerEntity = me.Entity.extend({
         return true;
     },
     
+    loseHealth: function(damage){
+        this.health = this.health - damage;
+    },
+    
     collideHandler: function(response){
         if(response.b.type==="EnemyBaseEntity"){
             var ydif = this.pos.y - response.b.pos.y;
@@ -232,8 +236,25 @@ game.EnemyCreep = me.Entity.extend({
     collideHandler: function(response){
         if(response.b.type=== "PlayerBase"){
             this.attacking = true;
+            
             this.lastAttacking = this.now;
+            
             this.body.vel.x = 0;
+            
+            this.pos.x = this.pos.x +1;
+            
+            if((this.now-this.lastHit >= 1000)){
+                this.lastHit = this.now;
+                response.b.loseHealth(1);
+            }
+        }
+        if(response.b.type=== "PlayerEntity"){
+            this.attacking = true;
+            
+            this.lastAttacking = this.now;
+            
+            this.body.vel.x = 0;
+            
             this.pos.x = this.pos.x +1;
             
             if((this.now-this.lastHit >= 1000)){
