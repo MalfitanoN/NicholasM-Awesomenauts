@@ -1,6 +1,22 @@
 game.PlayerEntity = me.Entity.extend({
     init: function(x, y, settings) {
-        this._super(me.Entity, "init", [x, y, {
+        this.setSuper();
+        this.setPlayerTimers();
+        this.setAttributes();
+        
+        this.type = "PlayerEntity";
+        
+        this.setFlags();
+
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+        
+        this.setAnimation();
+        this.renderable.setCurrentAnimation("idle");
+
+    },
+    
+    setSuper: function(x, y){
+    this._super(me.Entity, "init", [x, y, {
                 image: "player",
                 width: 64,
                 height: 64,
@@ -11,53 +27,43 @@ game.PlayerEntity = me.Entity.extend({
                 }
 
             }]);
-        this.type = "PlayerEntity";
-        this.health = game.data.playerHealth;
-
-        this.body.setVelocity(game.data.playerMoveSpeed, 20);
-        this.facing = "right";
+    },
+    
+    setPlayerTimers: function(){
         this.now = new Date().getTime();
         this.lastHit = this.now;
-        this.dead = false;
-        this.attack = game.data.playerAttack;
         this.lastAttack = new Date().getTime();
-
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
-
+    },
+    
+    setAttributes: function(){
+        this.health = game.data.playerHealth;
+        this.body.setVelocity(game.data.playerMoveSpeed, 20);
+        this.attack = game.data.playerAttack;
+    },
+    
+    setFlags: function(){
+        this.facing = "right";
+        this.dead = false;
+    },
+    
+    setAnimation: function(){
         this.renderable.addAnimation("idle", [143]);
         this.renderable.addAnimation("walk", [143, 144, 145, 146, 147, 148, 149, 150, 151], 80);
         this.renderable.addAnimation("attack", [195, 196, 197, 198, 199, 200], 80);
-
-        this.renderable.setCurrentAnimation("idle");
-
     },
+    
+    
     update: function(delta) {
         this.now = new Date().getTime();
         
-        if(this.health <= 0 ){
-            this.dead = true;
-        }
+        this.checkIfDead();
+        
+        this.checkKeyPressesAndMove();
 
-        if (me.input.isKeyPressed("right")) {
-            this.facing = "right";
-            this.body.vel.x += this.body.accel.x * me.timer.tick;
-            this.flipX(false);
-        } else if (me.input.isKeyPressed("left")) {
-            this.facing = "left";
-            this.flipX(true);
-            this.body.vel.x -= this.body.accel.x * me.timer.tick;
-        } else {
-            this.body.vel.x = 0;
-        }
-
-        if (me.input.isKeyPressed("jump") && !this.body.jumping && !this.body.falling) {
-            this.body.jumping = true;
-            this.body.vel.y -= this.body.accel.y * me.timer.tick;
-        }
-
+        
         if (me.input.isKeyPressed("attack")) {
             if (!this.renderable.isCurrentAnimation("attack")) {
-                this.renderable.setCurrentAnimation("attack", "idle")
+                this.renderable.setCurrentAnimation("attack", "idle");
                 this.renderable.setAnimationFrame();
             }
         } else if (this.body.vel.x !== 0) {
@@ -76,6 +82,46 @@ game.PlayerEntity = me.Entity.extend({
         this._super(me.Entity, "update", [delta]);
         return true;
     },
+    
+    checkIfDead: function(){
+        if(this.health <= 0 ){
+            return true;
+        }
+        return false;
+    },
+    
+    checkKeyPressesAndMove: function(){
+        if (me.input.isKeyPressed("right")) {
+            this.moveRight();
+        } else if (me.input.isKeyPressed("left")) {
+           this.moveLeft();
+        } else {
+            this.body.vel.x = 0;
+        }
+
+        if (me.input.isKeyPressed("jump") && !this.body.jumping && !this.body.falling) {
+            this.jump();
+        }
+
+    },
+    
+    moveRight: function(){
+        this.facing = "right";
+        this.body.vel.x += this.body.accel.x * me.timer.tick;
+        this.flipX(false);
+    },
+    
+    moveLeft: function(){
+         this.facing = "left";
+            this.flipX(true);
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
+    },
+    
+    jump: function(){
+        this.body.jumping = true;
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+    },
+    
     loseHealth: function(damage) {
         this.health = this.health - damage;
     },
