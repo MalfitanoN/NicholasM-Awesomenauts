@@ -5,14 +5,21 @@ game.PlayScreen = me.ScreenObject.extend({
 	onResetEvent: function() {
 		// reset the score
 		game.data.score = 0;
-
+   console.log(game.data.exp);
+        console.log(game.data.exp2);
 
                 me.levelDirector.loadLevel("level01");
 
                 this.resetPlayer(0, 420);
                 
-                var gamemanager = me.pool.pull("GameManager", 0, 0, {});
-                me.game.world.addChild(gamemanager, 0);
+                var gameTimerManager = me.pool.pull("GameTimerManager", 0, 0, {});
+                me.game.world.addChild(gameTimerManager, 0);
+                
+                var heroDeathManager = me.pool.pull("HeroDeathManager", 0, 0, {});
+                me.game.world.addChild(heroDeathManager, 0);
+                
+                var experianceManager = me.pool.pull("ExperianceManager", 0, 0, {});
+                me.game.world.addChild(experianceManager, 0);
                 
                 me.input.bindKey(me.input.KEY.D, "right");
                  me.input.bindKey(me.input.KEY.SPACE, "jump");

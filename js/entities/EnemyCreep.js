@@ -26,7 +26,6 @@ game.EnemyCreep = me.Entity.extend({
 
     },
     loseHealth: function(damage) {
-        console.log(damage);
         this.health = this.health - damage;
     },
     update: function(delta) {
