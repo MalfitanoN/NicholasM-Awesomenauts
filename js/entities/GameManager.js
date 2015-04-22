@@ -126,12 +126,12 @@ game.SpendGold = Object.extend({
                     draw: function(renderer){
                         this.font.draw(renderer.getContext(), "Current Gold: "  + game.data.gold + " | Press V to Exit", this.pos.x + 10, this.pos.y);
                         this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 40);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 80);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 120);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 160);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 200);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 240);
-                        this.font.draw(renderer.getContext(), "Press F1-F6 to Buy", this.pos.x + 10, this.pos.y + 280);
+                        this.font.draw(renderer.getContext(), "Increase Damage Current Level:" + game.data.exp1 + "Cost:" + ((game.data.exp1+1) * 10), this.pos.x + 10, this.pos.y + 80);
+                        this.font.draw(renderer.getContext(), "Increase Speed: " + game.data.exp2 + "Cost:" + ((game.data.exp2+1) * 10), this.pos.x + 10, this.pos.y + 120);
+                        this.font.draw(renderer.getContext(), "Increase Health: " + game.data.exp3 + "Cost:" + ((game.data.exp3+1) * 10), this.pos.x + 10, this.pos.y + 160);
+                        this.font.draw(renderer.getContext(), "Q-Ability: ", this.pos.x + 10, this.pos.y + 200);
+                        this.font.draw(renderer.getContext(), "W-Ability: ", this.pos.x + 10, this.pos.y + 240);
+                        this.font.draw(renderer.getContext(), "E-Ability:   ", this.pos.x + 10, this.pos.y + 280);
                     }
                 })) ;
                 me.game.world.addChild(game.data.buyText, 35);
