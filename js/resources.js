@@ -11,9 +11,11 @@ game.resources = [
         {name: "tower", type:"image", src: "data/img/tower_round.svg.png"},
         {name: "midTile", type:"image", src: "data/img/midTile.png"},
         {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
-        {name: "title-screen", type:"image", src: "data/img/title.png"},
+        {name: "title-screen", type:"image", src: "data/img/Black ops 3.JPG"},
         {name: "exp-screen", type:"image", src: "data/img/loadpic.png"},
-        {name: "gold-screen", type:"image", src: "data/img/spend.png"},
+        {name: "gold-screen", type:"image", src: "data/img/Black ops.jpg"},
+        {name: "load-screen", type:"image", src: "data/img/Black ops.jpg"},
+        {name: "new-screen", type:"image", src: "data/img/newpic.png"},
 
 	/* Atlases 
 	 * @example
