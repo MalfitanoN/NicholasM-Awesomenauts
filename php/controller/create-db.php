@@ -1,4 +1,4 @@
-        <?php
+ <?php
 
 //This links this page to database.php 
 require_once (__DIR__ . "/../model/config.php");
