@@ -19,6 +19,8 @@ game.resources = [
         {name: "new-screen", type:"image", src: "data/img/newpic.png"},
         {name: "desert_BG", type:"image", src: "data/img/desert.png"},
         {name: "player", type:"image", src: "data/img/soldierspritesheet1.png"},
+        {name: "Background", type:"image", src: "data/img/Background.png"},
+        {name: "germanshepard", type:"image", src: "data/img/germanshepard.png"},
 
 	/* Atlases 
 	 * @example
