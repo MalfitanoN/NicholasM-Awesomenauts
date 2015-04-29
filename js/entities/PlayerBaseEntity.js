@@ -1,7 +1,7 @@
 game.PlayerBaseEntity = me.Entity.extend({
     init: function(x, y, setting) {
         this._super(me.Entity, "init", [x, y, {
-                image: "tower",
+                image: "searchanddestroysequence",
                 width: 100,
                 height: 100,
                 spritewidth: "100",
@@ -19,7 +19,7 @@ game.PlayerBaseEntity = me.Entity.extend({
         this.type = "PlayerBase";
 
         this.renderable.addAnimation("idle", [0]);
-        this.renderable.addAnimation("broken", [1]);
+        this.renderable.addAnimation("broken", [2]);
         this.renderable.setCurrentAnimation("idle");
 
     },

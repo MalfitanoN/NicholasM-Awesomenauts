@@ -15,7 +15,6 @@ $hashedPassword = crypt($password, $salt);
 
 //this sends the information to the database
 $query = $_SESSION["connection"]->query("INSERT INTO users SET "
-        . "email = '',"
         . "username = '$username',"
         . "password = '$hashedPassword',"
         . "salt = '$salt',"
@@ -34,5 +33,5 @@ if ($query) {
 
     //this will tell you the error if there is one
 } else {
-    "<p>" . $_SESSION["connection"]->error . "</p>";
+    echo "<p>" . $_SESSION["connection"]->error . "</p>";
 }

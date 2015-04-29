@@ -7,8 +7,9 @@ game.resources = [
         
         {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
         {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
-        {name: "player", type:"image", src: "data/img/Player.jpg"},
+        {name: "x-player", type:"image", src: "data/img/Player.jpg"},
         {name: "tower", type:"image", src: "data/img/tower_round.svg.png"},
+        {name: "searchanddestroysequence", type:"image", src: "data/img/searchanddestroysequence.png"},
         {name: "midTile", type:"image", src: "data/img/midTile.png"},
         {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
         {name: "title-screen", type:"image", src: "data/img/Black ops 3.JPG"},
@@ -16,6 +17,8 @@ game.resources = [
         {name: "gold-screen", type:"image", src: "data/img/Black ops.jpg"},
         {name: "load-screen", type:"image", src: "data/img/Black ops.jpg"},
         {name: "new-screen", type:"image", src: "data/img/newpic.png"},
+        {name: "desert_BG", type:"image", src: "data/img/desert.png"},
+        {name: "player", type:"image", src: "data/img/soldierspritesheet1.png"},
 
 	/* Atlases 
 	 * @example

@@ -95,10 +95,11 @@ require_once("php/controller/create-db.php");
                 <script>
                 $("#mainmenu").bind("click", function(){
                    me.state.change(me.state.MENU); 
+                   console.log($("#username").val());
                 });
                 $("#register").bind("click", function(){
                    $.ajax({
-                       type: "POSTS",
+                       type: "POST",
                        url: "php/controller/create-user.php",
                        data: {
                            username: $("#username").val(),
@@ -108,7 +109,7 @@ require_once("php/controller/create-db.php");
                    })
                            .success(function(response){
                                if(response === "true"){
-                                   me.state.change(me.state.change.PLAY);
+                                   me.state.change(me.state.PLAY);
                                }else{
                                    alert(response);
                                }
@@ -131,16 +132,16 @@ require_once("php/controller/create-db.php");
                            .success(function(response){
                                if(response === "Invalid username and password"){
                                    alert(response);
-                                   me.state.change(me.state.change.PLAY);
+                                   me.state.change(me.state.PLAY);
                                }else{
-                                   var data = jQueryparseJSON(response);
+                                   var data = jQuery.parseJSON(response);
                                    game.data.exp = data["exp"];
                                    game.data.exp1 = data["exp1"];
                                    game.data.exp2 = data["exp2"];
                                    game.data.exp3 = data["exp3"];
                                    game.data.exp4 = data["exp4"];
                                    
-                                   me.state.change(me.state.change.SPENDEXP)
+                                   me.state.change(me.state.SPENDEXP);
                                }
                    })
                            .fail(function(response){

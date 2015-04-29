@@ -1,7 +1,7 @@
 game.EnemyBaseEntity = me.Entity.extend({
     init: function(x, y, setting) {
         this._super(me.Entity, "init", [x, y, {
-                image: "tower",
+                image: "searchanddestroysequence",
                 width: 100,
                 height: 100,
                 spritewidth: "100",
@@ -18,8 +18,8 @@ game.EnemyBaseEntity = me.Entity.extend({
 
         this.type = "EnemyBaseEntity";
 
-        this.renderable.addAnimation("idle", [0]);
-        this.renderable.addAnimation("broken", [1]);
+        this.renderable.addAnimation("idle", [1]);
+        this.renderable.addAnimation("broken", [3]);
         this.renderable.setCurrentAnimation("idle");
 
     },
