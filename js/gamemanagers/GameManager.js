@@ -6,11 +6,15 @@ game.ExperianceManager = Object.extend({
     update: function() {
         if (game.data.win === true && !this.gameover) {
             this.gameOver(true);
-            alert("YOU HAVE WON THIS TIME");
+            me.audio.playTrack("Black Ops 2 SOUND");
+            alert("Objective Parameters Obtained Well Done");
+            me.state.change(me.state.MENU);
         }
         else if (game.data.win === false && !this.gameover) {
             this.gameOver(false);
-            alert("GET NO SCOPED");
+            me.audio.playTrack("Black Ops - Humiliation");
+            alert("Humiliation");
+            me.state.change(me.state.MENU);
         }
         return true;
     },

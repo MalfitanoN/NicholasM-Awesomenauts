@@ -59,7 +59,7 @@ game.SpendGold = Object.extend({
                         this.font.draw(renderer.getContext(), "Increase Health: " + game.data.skill3 + " | Cost: " + ((game.data.skill3+1) * 10), this.pos.x + 10, this.pos.y + 160);
                         this.font.draw(renderer.getContext(), "Q-Ability: Temporary Speed Boost " + game.data.ability1 + " | Cost: " + ((game.data.ability1+1) * 10), this.pos.x + 10, this.pos.y + 200);
                         this.font.draw(renderer.getContext(), "W-Ability: Kills for Health " + game.data.ability2 + " | Cost: " + ((game.data.ability2+1) * 10), this.pos.x + 10, this.pos.y + 240);
-                        this.font.draw(renderer.getContext(), "E-Ability:  Throw your Knife " + game.data.ability3 + " | Cost: " + ((game.data.ability3+1) * 10), this.pos.x + 10, this.pos.y + 280);
+                        this.font.draw(renderer.getContext(), "E-Ability:   " + game.data.ability3 + " | Cost: " + ((game.data.ability3+1) * 10), this.pos.x + 10, this.pos.y + 280);
                     }
                 })) ;
                 me.game.world.addChild(game.data.buyText, 35);

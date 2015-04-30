@@ -21,16 +21,27 @@ require_once("php/controller/create-db.php");
 	<body>
 		<!-- Canvas placeholder -->
 		<div id="screen"></div>
-                <form id="input" method="post">
-                    <div class="field">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" autocomplete="off">
-                        
+                <form id="input" method="post" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="username" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input type="text" name="username" id="username" autocomplete="off">
+                        </div>
                     </div>
-                    <div class="password">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
-                        
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" id="password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox"> Remember me
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     
                     <button type="button"  id="register">Register</button>
@@ -38,7 +49,7 @@ require_once("php/controller/create-db.php");
                     <button type="button"  id="mainmenu">Main Menu</button>
                     
                 </form>
-
+                
 		<!-- melonJS Library -->
 		<!-- build:js js/app.min.js -->
 		<script type="text/javascript" src="lib/melonJS-1.1.0-min.js"></script>
@@ -58,7 +69,9 @@ require_once("php/controller/create-db.php");
                 <script type="text/javascript" src="js/entities/PlayerBaseEntity.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyBaseEntity.js"></script>
                 <script type="text/javascript" src="js/entities/EnemyCreep.js"></script>
+                <script type="text/javascript" src="js/entities/SpearThrow.js"></script>
 		<script type="text/javascript" src="js/entities/HUD.js"></script>
+                <script type="text/javascript" src="js/entities/MiniMap.js"></script>
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>
@@ -95,8 +108,7 @@ require_once("php/controller/create-db.php");
                 <script>
                 $("#mainmenu").bind("click", function(){
                    me.state.change(me.state.MENU); 
-                   console.log($("#username").val());
-                });
+               });
                 $("#register").bind("click", function(){
                    $.ajax({
                        type: "POST",
@@ -132,16 +144,16 @@ require_once("php/controller/create-db.php");
                            .success(function(response){
                                if(response === "Invalid username and password"){
                                    alert(response);
-                                   me.state.change(me.state.PLAY);
                                }else{
-                                   var data = jQuery.parseJSON(response);
-                                   game.data.exp = data["exp"];
-                                   game.data.exp1 = data["exp1"];
-                                   game.data.exp2 = data["exp2"];
-                                   game.data.exp3 = data["exp3"];
-                                   game.data.exp4 = data["exp4"];
-                                   
-                                   me.state.change(me.state.SPENDEXP);
+                                   alert(response);
+//                                   var data = jQuery.parseJSON(response);
+//                                   game.data.exp = data["exp"];
+//                                   game.data.exp1 = data["exp1"];
+//                                   game.data.exp2 = data["exp2"];
+//                                   game.data.exp3 = data["exp3"];
+//                                   game.data.exp4 = data["exp4"];
+//                                   
+//                                   me.state.change(me.state.SPENDEXP);
                                }
                    })
                            .fail(function(response){

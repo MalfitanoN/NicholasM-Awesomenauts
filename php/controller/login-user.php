@@ -16,7 +16,17 @@ $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
 //this will set the query eqall to the username
-$query = $_SESSION["connection"]->query("SELECT * password FROM users WHERE BINARY username = '$username'");
+$query = $_SESSION["connection"]->query("SELECT * FROM users WHERE BINARY username = '$username'");
+
+
+if($query){
+    $row = $query->fetch_array();
+     echo $row["username"];;
+}else{
+    echo "<p>" . $_SESSION["connection"]->error . "</p>";
+}
+
+echo $password;
 
 //this is an if statement to check if the password and username is correct andd if its right it will automaticaly redirect you  to the index
 if ($query->num_rows == 1) {
@@ -31,7 +41,7 @@ if ($query->num_rows == 1) {
         $array["exp4"] = $row["exp4"];
         $_SESSION["name"] = $username; 
         
-        echo jason_encode($array);
+        echo json_encode($array);
     } else {
 
         echo 'Invalid username and password';

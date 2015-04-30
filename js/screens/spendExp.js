@@ -37,7 +37,6 @@ game.SpendExp = me.ScreenObject.extend({
                         if(game.data.exp >= exp1cost){
                             game.data.exp1 += 1;
                             game.data.exp -= exp1cost;
-                            me.state.change(me.state.PLAY); 
                         }
                     }else if(action === "F2"){
                         
@@ -47,6 +46,7 @@ game.SpendExp = me.ScreenObject.extend({
                         
                     }else if(action === "F5"){
                         
+                            me.state.change(me.state.PLAY); 
                     }
                     
                 });
